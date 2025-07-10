@@ -1,22 +1,27 @@
-import './App.css'
-import Cadastrar from './pages/cadastrar/cadastrar'
-import ListarCadastro from './pages/listar-cadastro/listar-cadastro'
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Home from './pages/home/page'
+import Header from './components/Header/Header'
+import Cadastrar from "./pages/cadastrar/page"
+import EditarCadastro from "./pages/editarcadastro/page"
+import ListarCadastro from "./pages/listar-cadastro/page";
+import './App.css';
 
 function App() {
- 
+  
+
   return (
     <>
-      <header>
-        <h1>HEADER AQUI FINGE QUE O HEADER ESTÁ AQUI</h1>
-      </header>
-      <main>
-        <ListarCadastro />
-        <Cadastrar/>
-      </main>
-     
-   
+    <Router >
+      <Header/>
+      <Routes>
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/cadastrar" element={<Cadastrar/>}/>
+        <Route path="/editar-cadastro" element={<EditarCadastro/>}/>
+        <Route path="/listar-cadastro" element={<ListarCadastro/>}/>
+      </Routes>
+    </Router>
     </>
   )
-}
+};
 
 export default App
