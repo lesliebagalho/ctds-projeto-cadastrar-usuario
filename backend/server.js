@@ -1,11 +1,9 @@
-// Importa o framework Express
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import sqlite3pkg from 'sqlite3';
+import bodyParser from 'body-parser';
 
-// Importa a biblioteca do SQLite com mensagens de debug
-const sqlite3 = require('sqlite3').verbose();
-
-// Importa o CORS middleware para permitir comunicação com o frontend
-const cors = require('cors');
+const sqlite3 = sqlite3pkg.verbose();
 
 // Cria a aplicação Express
 const app = express();
@@ -13,25 +11,31 @@ const app = express();
 // Cria ou abre o banco de dados SQLite
 const db = new sqlite3.Database('./usuarios.db');
 
-// Middleware para permitir requisições JSON e CORS
+// Middleware para permitir requisições JSON, urlencoded e CORS
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Cria a tabela de usuários se não existir
 db.run(`CREATE TABLE IF NOT EXISTS usuarios (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nome TEXT,
-  senha TEXT
+  email VARCHAR,
+  senha VARCHAR
 )`);
 
 // Rota para cadastro de novo usuário
 app.post('/cadastrar', (req, res) => {
-  const { nome, senha } = req.body;
+  const { nome, email, senha } = req.body;
 
-  db.run('INSERT INTO usuarios (nome, senha) VALUES (?, ?)', [nome, senha], function(err) {
-    if (err) return res.status(500).json({ error: err.message });
-    res.json({ id: this.lastID, nome, senha });
-  });
+  db.run(
+    'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
+    [nome, email, senha],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ id: this.lastID, nome, email, senha });
+    }
+  );
 });
 
 // Rota para listar todos os usuários
