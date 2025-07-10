@@ -46,6 +46,19 @@ app.get('/usuarios', (req, res) => {
   });
 });
 
+// Rota para deletar um usuário pelo ID
+app.delete('/usuarios/:id', (req, res) => {
+  const { id } = req.params;
+  console.log(`Tentando deletar usuário com ID: ${id} (tipo: ${typeof id})`);
+  db.run('DELETE FROM usuarios WHERE id = ?', [Number(id)], function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    if (this.changes === 0) {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+    res.sendStatus(204);
+  });
+});
+
 // Inicia o servidor
 app.listen(3001, () => {
   console.log('Servidor rodando em http://localhost:3001');

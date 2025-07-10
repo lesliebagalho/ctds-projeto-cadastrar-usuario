@@ -1,0 +1,88 @@
+.tudo {
+  background-color: #ff6354;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #111;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.frame {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 40px; /* padding interno pro conteúdo respirar */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+}
+
+.titulos {
+  margin-bottom: 30px; /* espaço entre título e tabela */
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 18px;
+  color: #555;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-top: 20px;
+  
+}
+
+thead {
+  background-color: #f2f2f2;
+  color: #111;
+}
+
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+   
+}
+
+tbody tr:hover {
+  background-color: #c28686;
+  transition: background-color 0.3s ease;
+}
+
+tr {
+  transition: background-color 0.3s ease;
+  
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-right: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-editar {
+  background-color: #ff6b57;
+}
+
+.btn-excluir {
+  background-color: #d63031;
+}

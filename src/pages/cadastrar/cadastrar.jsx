@@ -3,10 +3,10 @@ import axios from 'axios';
 
 
 
-function App() {
+function Cadastrar() {
   const [formData, setFormData] = useState({ nome: '', senha: '', email: '' });
-
   const handleChange = (e) => {
+    
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -49,7 +49,7 @@ function App() {
           name='email'
           placeholder='email'
           value={formData.email}
-          oneChange={handleChange}
+          onChange={handleChange}
           required 
           style={{width: '100%', marginBottom: '10px'}}/>
         <button type="submit">Cadastrar</button>
@@ -58,4 +58,4 @@ function App() {
   );
 }
 
-export default App;
+export default Cadastrar;
