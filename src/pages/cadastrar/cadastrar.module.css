@@ -1,4 +1,7 @@
 /* src/components/Cadastrar.css */
+body{
+  background-color: #ff6354;
+}
 
 .pagina {
   background-color: #ff6354;
@@ -37,4 +40,73 @@ button {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
+}
+
+/* === CARD === */
+.card {
+  width: 400px;
+  min-height: 300px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  background-color: white; 
+}
+
+/* === FORM === */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* === INPUT === */
+.formulario input,
+.input {
+  border: 1px solid #FF6354; 
+  border-radius: 8px;         
+  height: 30px;               
+  padding-left: 7px;          
+  box-shadow: 0 1px #FF6354;  
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Aplica borda vermelha adicional se der erro (classe extra do React) */
+.input-error {
+  border-color: red;
+}
+
+/* === ERRO === */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  height: 1em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: -0.5rem;
+}
+
+.error-message.visible {
+  opacity: 1;
+}
+
+/* === BOTÃO === */
+button,
+.button {
+  height: 30px;                 
+  font-size: 0.7rem;            
+  color: white;                 
+  background-color: #FF6354;    
+  border: 0;                    
+  border-radius: 8px;           
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e44b3d; /* Tom mais escuro no hover */
 }
