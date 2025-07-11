@@ -64,7 +64,7 @@ const ListarCadastro = () => {
                 <td>{user.nome}</td>
                 <td>{user.email}</td>
                 <td>
-                  <Link to={`/editar-cadastro/`}>
+                <Link to={`/editar-cadastro/${user.id}`}>
   <button className={styles['btn-editar']}>Editar</button>
 </Link>
 
