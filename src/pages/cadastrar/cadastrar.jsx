@@ -3,8 +3,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './index.css'
-
+import styles from './page/cadastrar.module.css';
 
 function Cadastrar() {
   const [formData, setFormData] = useState({
