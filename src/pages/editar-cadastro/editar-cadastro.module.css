@@ -1,0 +1,99 @@
+.pagina {
+    background-color: #ff6354;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: sans-serif;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tituloPrincipal {
+    /* só se quiser estilos adicionais para o h2 */
+  }
+  
+  .formulario input {
+    width: 100%;
+    border: 1px solid #ff6354;
+    border-radius: 8px;
+    height: 36px;
+    padding-left: 10px;
+    box-shadow: 0 1px #ff6354;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .input {
+    /* se quiser pode repetir ou tirar o .formulario input */
+  }
+  
+  .btnSalvar {
+    height: 36px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #ff6b57;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btnExcluir {
+    height: 36px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #d63031;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px black;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .modal button {
+    margin: 10px 5px;
+    padding: 8px 16px;
+    font-weight: bold;
+  }
+  
+  .btnCancelar {
+    height: 36px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #d63031;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  

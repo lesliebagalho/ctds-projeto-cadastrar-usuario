@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-
+import Editarcadastro from "./pages/editar-cadastro/editar-cadastro";
 import Header from './components/Header/Header'
 import Cadastrar from "./pages/cadastrar/cadastrar"
 import Home from "./pages/home/home";
@@ -18,6 +18,7 @@ function App() {
         
         <Route path="/home" element={<Home/>}/>
         <Route path="/cadastrar" element={<Cadastrar/>}/>
+        <Route path="editar-cadastro" element = {<Editarcadastro/>}/>
         
         <Route path="/listar-cadastro" element={<ListarCadastro/>}/>
       </Routes>

@@ -64,9 +64,10 @@ const ListarCadastro = () => {
                 <td>{user.nome}</td>
                 <td>{user.email}</td>
                 <td>
-                  <Link to="/editar-cadastro">
-                    <button className={styles['btn-editar']}>Editar</button>
-                  </Link>
+                  <Link to={`/editar-cadastro/`}>
+  <button className={styles['btn-editar']}>Editar</button>
+</Link>
+
                   <button className={styles['btn-excluir']} onClick={() => excluirUsuario(user.id)} >Excluir</button>
                 </td>
               </tr>
