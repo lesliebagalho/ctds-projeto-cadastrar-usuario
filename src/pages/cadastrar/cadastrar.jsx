@@ -1,9 +1,6 @@
-
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './page/cadastrar.module.css';
+import styles from './Cadastrar.module.css'; 
 
 function Cadastrar() {
   const [formData, setFormData] = useState({
@@ -12,58 +9,32 @@ function Cadastrar() {
     email: '',
   });
 
-  const [errors, setErrors] = useState({
-    email: '',
-  });
+  const [errors, setErrors] = useState({ email: '' });
 
-  const validateEmail = (email) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = {};
-
-    if (!formData.email || !validateEmail(formData.email)) {
-      newErrors.email = 'E-mail inválido';
-      valid = false;
-    }
-
-    setErrors(newErrors);
-    return valid;
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === 'email') {
-      if (value && !validateEmail(value)) {
-        setErrors((prev) => ({
-          ...prev,
-          email: 'E-mail inválido',
-        }));
-      } else {
-        setErrors((prev) => ({
-          ...prev,
-          email: '',
-        }));
-      }
+      setErrors((prev) => ({
+        ...prev,
+        email: value && !validateEmail(value) ? 'E-mail inválido' : '',
+      }));
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) return;
+    if (!validateEmail(formData.email)) {
+      setErrors({ email: 'E-mail inválido' });
+      return;
+    }
 
     try {
       const res = await axios.post('http://localhost:3001/cadastrar', formData);
       alert(`Usuário ${res.data.nome} cadastrado com sucesso!`);
-
       setFormData({ nome: '', senha: '', email: '' });
       setErrors({ email: '' });
     } catch (err) {
@@ -73,50 +44,34 @@ function Cadastrar() {
   };
 
   return (
-    <div className="card">
-      <h2>Cadastrar</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          type="text"
-          name="nome"
-          placeholder="Nome"
-          value={formData.nome}
-          onChange={handleChange}
-          required
-          className="input"
-        />
+    <div className={styles.pagina}>
+      <div className={styles.card}>
+        <h2>Cadastrar</h2>
+        <form onSubmit={handleSubmit} className={`${styles.form} ${styles.formulario}`}>
+          <h3>Nome</h3>
+          <input type="text" name="nome" value={formData.nome} onChange={handleChange} required className={styles.input} />
 
-        <input
-          type="password"
-          name="senha"
-          placeholder="Senha"
-          value={formData.senha}
-          onChange={handleChange}
-          required
-          className="input"
-        />
+          <h3>Senha</h3>
+          <input type="password" name="senha" value={formData.senha} onChange={handleChange} required className={styles.input} />
 
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className={`input ${errors.email ? 'input-error' : ''}`}
-        />
+          <h3>Email</h3>
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className={`${styles.input} ${errors.email ? styles['input-error'] : ''}`}
+          />
+          <div className={`${styles['error-message']} ${errors.email ? styles.visible : ''}`}>
+            {errors.email}
+          </div>
 
-        <div className={`error-message ${errors.email ? 'visible' : ''}`}>
-          {errors.email}
-        </div>
-
-        <button type="submit" className="button">
-          Cadastrar
-        </button>
-      </form>
+          <button type="submit" className={styles.button}>Cadastrar</button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default Cadastrar;
-
