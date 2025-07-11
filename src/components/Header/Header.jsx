@@ -12,7 +12,6 @@ export default function Header(){
             <nav className={styles.nav}>
             <Link to="/home">Home</Link>
             <Link to="/cadastrar">Novo Cadastro</Link>
-            <Link to="/editar-cadastro">Editar Cadastro</Link>
             <Link to="/listar-cadastro">Listar Cadastro</Link>
             </nav>
         </header>
